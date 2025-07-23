@@ -21,3 +21,22 @@
     <i class="fa-solid fa-bullhorn text-primary"></i>
   <% end if model.is_a?(Notice::MemberAnnouncement) %>
 </td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-circle-info text-info"></i>
+    <% end %>
+    <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-pencil text-link"></i>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, form: { data: { turbo_confirm: t('.destroy.confirm') } }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-trash text-danger"></i>
+    <% end %>
+  </div>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'edit_user', id: model.id }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-bullhorn text-primary"></i>
+      <span class="ml-1"><%= t('.edit_user.title') %></span>
+    <% end %>
+  </div>
+</td>
