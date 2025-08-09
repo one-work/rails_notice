@@ -1,0 +1,13 @@
+<div class="grid">
+  <%= link_to({ controller: 'notice/admin/announcements' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <strong><%= Notice::Announcement.default_where(default_params).count %></strong>
+    <p><%= t('notice.admin.announcements.index.title') %></p>
+  <% end %>
+  <%= link_to({ controller: 'notice/admin/member_notifications' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <strong><%= Notice::MemberNotification.default_where(default_params).count %></strong>
+    <p><%= t('notice.admin.member_notifications.index.title') %></p>
+  <% end %>
+  <%= link_to({ controller: 'notice/admin/members' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <p><%= t('notice.admin.members.index.title') %></p>
+  <% end %>
+</div>
