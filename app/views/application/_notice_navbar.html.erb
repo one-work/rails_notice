@@ -1,6 +1,6 @@
 <% if defined?(current_user) && current_user %>
   <%= link_to({ controller: 'notice/my/notifications' }, data: { controller: 'notice-channel' }, id: 'notice_show', class: 'navbar-item') do %>
-    <i class="fa-regular fa-bell"></i>
+    <%= svg_tag 'bell' %>
     <span id="notice_count"><%= current_user.unread_count %></span>
   <% end %>
 <% end %>
