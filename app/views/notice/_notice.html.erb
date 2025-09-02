@@ -1,6 +1,6 @@
 <div class="level is-underline">
   <div class="level-left">
-    <i class="fa-regular fa-bell"></i>
+    <%= svg_tag 'bell' %>
     <%= link_to url_my_notification_path(notification) do %>
       <%= notification.title %>
       <%= notification.body %>

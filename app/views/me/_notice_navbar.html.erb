@@ -1,4 +1,4 @@
 <%= link_to({ controller: 'notice/me/notifications' }, data: { turbo_frame: '_top' }, id: 'notice_show', class: 'navbar-item') do %>
-  <i class="fa-solid fa-bell"></i>
-  <span class="pl-1" id="notice_count"><%= current_member.unread_count %></span>
+  <%= svg_tag 'bell' %>
+  <span class="ml-1" id="notice_count"><%= current_member.unread_count %></span>
 <% end if defined?(current_member) && current_member %>
