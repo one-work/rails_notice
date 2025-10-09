@@ -1,5 +1,5 @@
 <%= f.select :type, options_for_select(Notice::Announcement.options_i18n(:type), f.object.type) %>
 <%= f.text_field :title, autofocus: true %>
 <%= f.text_area :body %>
-<%= f.file_field :cover %>
+<%= render 'com/attachments/list_field', target: f.object.cover, f: f %>
 <%= f.text_field :link %>
