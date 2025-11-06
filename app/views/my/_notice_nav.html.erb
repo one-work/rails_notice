@@ -1,8 +1,8 @@
 <div class="menu-label"><%= t('notice.my.title') %></div>
 <div class="menu-list">
-  <%= link_to({ controller: 'notice/my/notifications' }, class: active_helper(notifications: 'index', item: 'has-block-space-between', active: 'has-block-space-between is-active')) do %>
+  <%= link_to({ controller: 'notice/my/notifications' }, data: { turbo_frame: 'body' }, class: active_helper(notifications: 'index', item: 'has-block-space-between', active: 'has-block-space-between is-active')) do %>
     <span><%= t('notice.my.notifications.index.title') %></span>
     <span class="text-grey-light"><%= current_user.unread_count %></span>
   <% end %>
-  <%= link_to t('notice.my.notifications.readed.title'), { controller: 'notice/my/notifications', action: 'readed' }, class: active_helper(notifications: 'readed', active: 'is-active') %>
+  <%= link_to t('notice.my.notifications.readed.title'), { controller: 'notice/my/notifications', action: 'readed' }, data: { turbo_frame: 'body' }, class: active_helper(notifications: 'readed', active: 'is-active') %>
 </div>
