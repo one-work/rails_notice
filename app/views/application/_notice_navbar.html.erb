@@ -1,5 +1,5 @@
 <% if defined?(current_user) && current_user %>
-  <%= link_to({ controller: 'notice/my/notifications' }, id: 'notice_show', data: { controller: 'notice-channel' }, class: 'navbar-item') do %>
+  <%= link_to({ controller: 'notice/my/notifications' }, id: 'notice_show', data: { controller: 'notice-channel', turbo_frame: 'main' }, class: 'navbar-item') do %>
     <%= svg_tag 'bell' %>
     <span id="notice_count"><%= current_user.unread_count %></span>
   <% end %>
