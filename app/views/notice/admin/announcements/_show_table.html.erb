@@ -1,9 +1,9 @@
 <div>
-  <dt><%= Notice::Annunciation.human_attribute_name(:title) %></dt>
+  <dt><%= Notice::Announcement.human_attribute_name(:title) %></dt>
   <dd><%= @annunciation.title %></dd>
 </div>
 <div>
-  <dt><%= Notice::Annunciation.human_attribute_name(:body) %></dt>
+  <dt><%= Notice::Announcement.human_attribute_name(:body) %></dt>
   <dd><%= @annunciation.body %></dd>
 </div>
 <div>
@@ -19,8 +19,5 @@
         </div>
       <% end %>
     </div>
-    <%= link_to publish_admin_annunciation_path(@annunciation), aria: { label: '发布' }, class: 'button is-small is-rounded' do %>
-      <i class="fa-solid fa-bullhorn"></i>
-    <% end %>
   </dd>
 </div>
