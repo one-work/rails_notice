@@ -1,10 +1,5 @@
-require 'active_support/configurable'
-
 module RailsNotice
-  include ActiveSupport::Configurable
+  mattr_accessor :config, default: ActiveSupport::OrderedOptions.new
 
-  configure do |config|
-    config.link_host = ''
-  end
-
+  config.link_host = ''
 end
