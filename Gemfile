@@ -8,9 +8,9 @@ gem 'puma'
 gem 'solid_queue'
 gem 'propshaft'
 
-gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_auth', github: 'work-design/rails_auth'
-gem 'rails_design', github: 'work-design/rails_design'
+gem 'rails_com', path: '../rails_com'
+gem 'rails_auth', path: '../rails_auth'
+gem 'rails_ui', path: '../rails_ui'
 
 group :development, :test do
   gem 'debug'
