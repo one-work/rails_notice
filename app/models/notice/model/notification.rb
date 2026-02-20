@@ -15,7 +15,7 @@ module Notice
       attribute :archived, :boolean, default: false
       attribute :verbose, :boolean, default: false
       attribute :created_at, :datetime, null: false, index: true
-      attribute :receiver_id, :big_integer, index: true
+      attribute :receiver_id, :uuid, index: true
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
