@@ -7,7 +7,7 @@ module Notice
     end
 
     def wechat_users
-      user.wechat_users.default_where(appid: organ.apps.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).pluck(:appid))
+      user.wechat_users.default_where(appid: organ.apps.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).pluck(:appid)).pluck(:uid)
     end
 
     def increment_unread

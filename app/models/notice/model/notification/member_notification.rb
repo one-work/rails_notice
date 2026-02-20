@@ -7,7 +7,7 @@ module Notice
     end
 
     def wechat_users
-      [member.wechat_user].presence || member.wechat_users.default_where(appid: organ.apps.where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).pluck(:appid))
+      [member.wechat_openid]
     end
 
     def increment_unread
