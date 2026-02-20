@@ -15,9 +15,9 @@ module Notice
         next if wechat_template.nil?
 
         if ['Wechat::PublicApp', 'Wechat::PublicAgency'].include? organ.app.type
-          wechat_notice = Wechat::PublicNotice.new open_id: open_id
+          wechat_notice = Wechat::PublicNotice.new open_id: open_id, appid: organ.appid
         else
-          wechat_notice = Wechat::ProgramNotice.new open_id: open_id
+          wechat_notice = Wechat::ProgramNotice.new open_id: open_id, appid: organ.appid
         end
 
         wechat_notice.template = wechat_template
