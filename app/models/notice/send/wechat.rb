@@ -3,7 +3,7 @@ module Notice
     extend ActiveSupport::Concern
 
     included do
-      belongs_to :template_config, ->(o) { where(notifiable_type: o.notifiable_type) }, class_name: 'Wechat::TemplateConfig', foreign_key: :code, primary_key: :code, optional: true
+      belongs_to :template_config, class_name: 'Wechat::TemplateConfig', foreign_key: [:notifiable_type, :code], primary_key: [:notifiable_type, :code], optional: true
     end
 
     def send_out
