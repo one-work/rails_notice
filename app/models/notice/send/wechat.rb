@@ -10,7 +10,7 @@ module Notice
       super if defined? super
       return unless template_config
 
-      wechat_users.each do |open_id|
+      wechat_users.map do |open_id|
         wechat_template = template_config.templates.find_by(appid: organ.appid)
         next if wechat_template.nil?
 
