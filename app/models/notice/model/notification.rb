@@ -28,9 +28,9 @@ module Notice
       scope :unread, -> { where(read_at: nil, archived: false) }
       scope :readed, -> { where.not(read_at: nil, archived: false) }
 
+      after_create :increment_unread, if: -> { read_at.blank? }
+      after_destroy :decrement_unread, if: -> { read_at.blank? }
       after_create_commit :process_job
-      after_create_commit :increment_unread, if: -> { read_at.blank? }
-      after_destroy_commit :decrement_unread, if: -> { read_at.blank? }
     end
 
     def store_other_params(other_params)
