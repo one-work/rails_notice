@@ -25,7 +25,6 @@ module Notice
 
       has_many :notification_sendings, dependent: :delete_all
 
-      default_scope -> { order(created_at: :desc) }
       scope :unread, -> { where(read_at: nil, archived: false) }
       scope :readed, -> { where.not(read_at: nil, archived: false) }
 
