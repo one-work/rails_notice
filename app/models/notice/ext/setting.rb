@@ -3,7 +3,7 @@ module Notice
     extend ActiveSupport::Concern
 
     included do
-      if connection.adapter_name == 'PostgreSQL'
+      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
         attribute :notifiable_types, :string, array: true, default: []
       else
         attribute :notifiable_types, :json, default: []
