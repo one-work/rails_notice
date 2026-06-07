@@ -1,7 +1,7 @@
 <%= form_with theme: 'search' do |f| %>
   <div class="field-body">
     <div class="">
-      <%= f.select :user_id, options_for_select([]), { wrap: { input: nil } }, { class: 'ui search dropdown' } %>
+      <%= f.select :user_id, options_for_select([]), { wrap: { input: nil } } %>
     </div>
     <%= f.submit %>
   </div>
