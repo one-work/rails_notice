@@ -7,7 +7,7 @@ module Notice
     end
 
     def wechat_users
-      [member.wechat_openid]
+      member.wechat_users
     end
 
     def increment_unread
