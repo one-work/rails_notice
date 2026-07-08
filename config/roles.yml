@@ -1,0 +1,3 @@
+default:
+  notice/admin/members: all
+  notice/admin/member_notifications: all
