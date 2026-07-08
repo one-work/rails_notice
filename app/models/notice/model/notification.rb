@@ -68,8 +68,8 @@ module Notice
         'title' => title,
         'body' => body
       }
-      r.merge! self.notifiable.attributes.slice(*notify_setting[:only])
-      Array(notify_setting[:methods]).each do |m|
+      r.merge! self.notifiable(**notify_setting.symbolize_keys)
+      Array(notify_setting['methods']).each do |m|
         r.merge! m => notifiable.try(m)
       end
       r
