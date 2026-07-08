@@ -1,0 +1,4 @@
+Notice::Announcement:
+  default:
+    only: ['title', 'body', 'link']
+    methods: ['cover_url']

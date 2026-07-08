@@ -17,7 +17,6 @@ module Notice
       validates :body, presence: true
 
       has_one_attached :cover
-      acts_as_notify :default, only: [:title, :body, :link], methods: [:cover_url]
     end
 
     def cover_url
