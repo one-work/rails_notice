@@ -103,7 +103,7 @@ module Notice
     end
 
     def notify_setting
-      RailsNotice.notifiable_types.dig(notifiable_type, self.code.to_sym) || {}
+      self.class.default_hash.dig(notifiable_type, self.code) || {}
     end
 
     def tr_key(column)
@@ -198,6 +198,24 @@ module Notice
     class_methods do
       def notifiable_types
         self.unscoped.select(:notifiable_type).distinct.pluck(:notifiable_type).compact.sort!
+      end
+
+      def default_hash
+        if Rails.root.join('config/notice.yml').exist?
+          init_hash = YAML.load_file(Rails.root.join('config/notice.yml'), aliases: true, fallback: {})
+        else
+          init_hash = {}
+        end
+
+        Rails::Engine.subclasses.each_with_object(init_hash) do |engine, ha|
+          icon_path = engine.root.join('config/notice.yml')
+          if icon_path.exist?
+            YAML.safe_load_file(icon_path, aliases: true, fallback: {}).each do |k, v|
+              ha[k] ||= {}
+              ha[k].with_defaults! v
+            end
+          end
+        end
       end
     end
 
