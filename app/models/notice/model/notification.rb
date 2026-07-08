@@ -68,20 +68,16 @@ module Notice
         'title' => title,
         'body' => body
       }
-      r.merge! self.notifiable(**notify_setting.symbolize_keys)
-      Array(notify_setting['methods']).each do |m|
-        r.merge! m => notifiable.try(m)
-      end
+      r.merge! self.notifiable.as_json(**notify_setting.symbolize_keys)
       r
     end
 
     def linked_detail
-      r = self.linked.as_json(**linked_setting.slice(:only, :except, :include, :methods))
-      Hash(r)
+      self.linked.as_json(**linked_setting.symbolize_keys)
     end
 
     def linked_setting
-      RailsNotice.notifiable_types.dig(linked_type, self.code.to_sym) || {}
+      RailsNotice.notifiable_types.dig(linked_type, self.code) || {}
     end
 
     def notifiable_attributes
