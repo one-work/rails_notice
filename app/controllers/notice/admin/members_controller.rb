@@ -7,7 +7,7 @@ module Notice
       q_params.merge! default_params
       q_params.merge! params.permit(:id)
 
-      @members = Org::Member.default_where(q_params).page(params[:page])
+      @members = Org::Member.default_where(q_params).order(id: :asc).page(params[:page])
     end
 
     private
