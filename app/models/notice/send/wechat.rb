@@ -11,8 +11,8 @@ module Notice
       return unless template_config
 
       wechat_users.includes(:app).map do |wechat_user|
-        wechat_template = template_config.templates.find_by(appid: organ.appid)
-        next if wechat_template.nil?
+        template = template_config.templates.find_by(appid: wechat_user.appid)
+        next if template.nil?
 
         if ['Wechat::PublicApp', 'Wechat::PublicAgency'].include? wechat_user.app.type
           wechat_notice = Wechat::PublicNotice.new open_id: wechat_user.uid, appid: wechat_user.appid
@@ -20,8 +20,8 @@ module Notice
           wechat_notice = Wechat::ProgramNotice.new open_id: wechat_user.uid, appid: wechat_user.appid
         end
 
-        wechat_notice.template = wechat_template
-        wechat_notice.msg_request = wechat_template.msg_requests.where(open_id: wechat_user.uid).first
+        wechat_notice.template = template
+        wechat_notice.msg_request = template.msg_requests.where(open_id: wechat_user.uid).first
         wechat_notice.notification = self
         wechat_notice.save
         wechat_notice
