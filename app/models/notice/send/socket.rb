@@ -5,7 +5,7 @@ module Notice
       super if defined? super
 
       content = ApplicationController.render(formats: [:turbo_stream], partial: 'notice_push', locals: { model: self })
-      ReceiverChannel.broadcast_to(member.identity, content)
+      #ReceiverChannel.broadcast_to(member.identity, content)
       self.notification_sendings.find_or_create_by(way: 'websocket', sent_to: receiver_id)
     end
 
