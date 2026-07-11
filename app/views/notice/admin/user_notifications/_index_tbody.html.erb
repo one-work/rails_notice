@@ -1,0 +1,27 @@
+<td>
+  <p><%= model.user.name %></p>
+</td>
+<td>
+  <p><%= link_to model.title, { action: 'show', id: model.id }, text: true %></p>
+  <p><%= model.body %></p>
+  <p><%= model.link %></p>
+</td>
+<td>
+  <p><%= model.notifiable_type_i18n %></p>
+  <p><%= model.notifiable_id %></p>
+</td>
+<td>
+  <p><%= model.sender_type %></p>
+  <p><%= model.sender_id %></p>
+</td>
+<td>
+  <p><%= model.linked_type %></p>
+  <p><%= model.linked_id %></p>
+</td>
+<td>
+  <p><time data-controller="time" class="has-text-gray"><%= model.created_at.to_formatted_s(:iso8601) %></time></p>
+  <p><time data-controller="time" class="text-primary"><%= model.read_at.to_formatted_s(:iso8601) if model.read_at.present? %></time></p>
+</td>
+<td>
+  <p><%= model.official %></p>
+</td>

@@ -1,0 +1,8 @@
+<%= form_with theme: 'search', model: Notice::Notification.new do |f| %>
+  <div class="field-body">
+    <%= f.text_field 'user.name-like' %>
+    <%= f.text_field 'body-like' %>
+    <%= f.submit %>
+  </div>
+<% end %>
+

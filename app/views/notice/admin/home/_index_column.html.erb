@@ -7,6 +7,9 @@
     <strong><%= Notice::MemberNotification.default_where(default_params).count %></strong>
     <p><%= t('notice.admin.member_notifications.index.title') %></p>
   <% end %>
+  <%= link_to({ controller: 'notice/admin/user_notifications' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <p><%= t('notice.admin.user_notifications.index.title') %></p>
+  <% end %>
   <%= link_to({ controller: 'notice/admin/members' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <p><%= t('notice.admin.members.index.title') %></p>
   <% end %>

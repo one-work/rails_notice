@@ -1,0 +1,15 @@
+<%=
+  tr_tag(
+    model,
+    {
+      action: url_for(action: 'push', id: model.id),
+      icon: 'plane',
+      title: t('.push.title')
+    },
+    {
+      action: url_for(action: 'email', id: model.id),
+      icon: 'envelope',
+      title: t('.email.title')
+    }
+  ) { yield }
+%>
