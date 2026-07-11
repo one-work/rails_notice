@@ -8,9 +8,11 @@ module Notice
 
     def wechat_users
       appids = organ.apps.pluck(:appid)
-      appids << organ.provider.appid if organ.provider
+      if appids.blank? && organ.provider
+        appids << organ.provider.appid
+      end
 
-      user.wechat_users.default_where(appid: appids)
+      user.wechat_users.where(appid: appids)
     end
 
     def increment_unread
