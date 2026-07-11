@@ -18,6 +18,13 @@ zh:
           title: 推送
         email:
           title: 邮件
+      user_notifications:
+        index:
+          title: 通知
+        push:
+          title: 推送
+        email:
+          title: 邮件
       members:
         index:
           title: 通知设置
