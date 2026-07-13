@@ -9,7 +9,7 @@ module Notice
       q_params.merge! default_params
       q_params.merge! params.permit(:archived, :receiver_id, :notifiable_type, :notifiable_id, 'user.name-like')
 
-      @notifications = UserNotification.default_where(q_params).order(id: :desc).page(params[:page])
+      @notifications = UserNotification.includes(:user).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     def push
