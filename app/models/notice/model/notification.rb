@@ -13,7 +13,6 @@ module Notice
       attribute :code, :string, default: 'default'
       attribute :official, :boolean, default: false
       attribute :archived, :boolean, default: false
-      attribute :verbose, :boolean, default: false
       attribute :created_at, :datetime, null: false, index: true
       attribute :receiver_id, :uuid, index: true
 
@@ -45,11 +44,7 @@ module Notice
         self.linked_id = other_params[:linked].id
       end
 
-      self.assign_attributes other_params.slice(
-        :title, :body, :link, :organ_id,
-        :verbose, :code,
-        :cc_emails
-      )
+      self.assign_attributes other_params.slice(:title, :body, :link, :organ_id, :code)
     end
 
     def process_job
@@ -81,21 +76,17 @@ module Notice
     end
 
     def notifiable_attributes
-      if verbose
-        r = notifiable_detail
-        r.transform_values! do |i|
-          next i unless i.acts_like?(:time)
-          if self.user.respond_to?(:timezone)
-            time_zone = self.user.timezone
-          else
-            time_zone = Time.zone.name
-          end
-          i.in_time_zone(time_zone).strftime '%Y-%m-%d %H:%M:%S'
+      r = notifiable_detail
+      r.transform_values! do |i|
+        next i unless i.acts_like?(:time)
+        if self.user.respond_to?(:timezone)
+          time_zone = self.user.timezone
+        else
+          time_zone = Time.zone.name
         end
-        r
-      else
-        {}
+        i.in_time_zone(time_zone).strftime '%Y-%m-%d %H:%M:%S'
       end
+      r
     end
 
     def notify_setting
