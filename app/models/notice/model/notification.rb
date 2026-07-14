@@ -72,7 +72,7 @@ module Notice
     end
 
     def linked_setting
-      RailsNotice.notifiable_types.dig(linked_type, self.code) || {}
+      self.class.default_hash.dig(linked_type, self.code) || {}
     end
 
     def notifiable_attributes
