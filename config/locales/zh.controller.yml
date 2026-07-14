@@ -13,14 +13,14 @@ zh:
           title: 发布
       member_notifications:
         index:
-          title: 通知
+          title: 员工通知
         push:
           title: 推送
         email:
           title: 邮件
       user_notifications:
         index:
-          title: 通知
+          title: 用户通知
         push:
           title: 推送
         email:
