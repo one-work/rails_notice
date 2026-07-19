@@ -1,6 +1,6 @@
 <%= form_with theme: 'modal', model: @announcement_organ, url: { action: 'create' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section id="modal-card-body" class="modal-card-body">
     <%= f.collection_select :organ_id, @departments, :id, :name, { data: { controller: 'choice' } } %>
   </section>
   <%= f.submit %>
