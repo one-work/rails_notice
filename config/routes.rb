@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
   concern :notice do
     resources :notifications, only: [:index, :show, :destroy] do
       collection do
