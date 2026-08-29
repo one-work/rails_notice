@@ -3,7 +3,7 @@ module Notice
     extend ActiveSupport::Concern
 
     included do
-      attribute :notifiable_types, :json, default: []
+      attribute :notifiable_types, :json, default: ['Trade::Order']
       attribute :counters, :json, default: {}
       attribute :showtime, :integer, default: 0
       attribute :accept_email, :boolean, default: true
