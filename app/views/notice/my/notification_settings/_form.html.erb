@@ -1,5 +1,5 @@
 <%= form_with model: @notification_setting, url: { action: 'update' } do |f| %>
   <%= f.number_field :showtime, step: 1 %>
-  <%= f.check_box :accept_email %>
+  <%= f.checkbox :accept_email %>
   <%= f.submit %>
 <% end %>
